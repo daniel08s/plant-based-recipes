@@ -31,13 +31,17 @@ const app = express();
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // Connect Mongo schemas to GraphQL
-app.use('/graphql', graphqlExpress({
-  schema,
-  context: {
-    Recipe,
-    User
-  }
-}));
+app.use(
+  '/graphql',
+  bodyParser.json(),
+  graphqlExpress({
+    schema,
+    context: {
+      Recipe,
+      User
+    }
+  })
+);
 
 const PORT = process.env.PORT || 4444;
 
