@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config({ path: 'variables.env' });
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
@@ -21,11 +22,17 @@ const schema = makeExecutableSchema({
 // Connects to database
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log('DB connected'))
+  .then(() => console.log('DB connected 🎉'))
   .catch(err => console.error(err));
 
 // Initializes express server
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // Create GraphiQL application
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
