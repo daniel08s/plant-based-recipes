@@ -13,7 +13,7 @@ const App = () => (
     <h1>Home</h1>
     <Query query={GET_ALL_RECIPES}>
       {({ data, loading, error }) => {
-        if (loading) return <div>⏳ Loading...</div>
+        if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
         if (error) return <div>Error</div>
         console.log(data);
         return (
