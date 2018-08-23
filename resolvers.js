@@ -8,11 +8,23 @@ const createToken = (user, secret, expiresIn) => {
 
 exports.resolvers = {
   Query: {
-    getAllRecipes: async (rooot, args, { Recipe }) => {
+    getAllRecipes: async (root, args, { Recipe }) => {
       return await Recipe.find();
     },
 
-    getAllUsers: async (rooot, args, { User }) => {
+    getCurrentUser: async (root, args, { currentUser, User }) => {
+      if (!currentUser) {
+        return null;
+      }
+      const user = await User.findOne({ username: currentUser.username })
+        .populate({
+          path: 'favorites',
+          model: 'Recipe'
+        });
+      return user;
+    },
+
+    getAllUsers: async (root, args, { User }) => {
       return await User.find();
     }
   },

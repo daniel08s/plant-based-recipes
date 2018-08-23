@@ -23,6 +23,7 @@ type User {
 type Query {
   getAllRecipes: [Recipe]
   getAllUsers: [User]
+  getCurrentUser: User
 }
 
 type Token {
