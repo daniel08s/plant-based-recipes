@@ -14,14 +14,19 @@ type Recipe {
 type User {
   _id: ID
   username: String! @unique
-  password: String!
   email: String!
+  password: String!
   joinDate: String
   favorites: [Recipe]
 }
 
 type Query {
   getAllRecipes: [Recipe]
+  getAllUsers: [User]
+}
+
+type Token {
+  token: String!
 }
 
 type Mutation {
@@ -32,6 +37,12 @@ type Mutation {
     instructions: String!,
     username: String
   ): Recipe
+
+  signupUser(
+    username: String!,
+    email: String!,
+    password: String!
+  ): Token
 }
 
 `;
