@@ -42,7 +42,11 @@ mutation(
     instructions: $instructions
     username: $username
   ) {
+    _id
     name
+    category
+    description
+    instructions
     createdDate
     likes
     username
