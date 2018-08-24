@@ -37,7 +37,7 @@ type Mutation {
     description: String!,
     category: String!,
     instructions: String!,
-    username: String
+    username: String!
   ): Recipe
 
   signinUser(

@@ -21,6 +21,7 @@ query($_id: ID!) {
     instructions
     createdDate
     likes
+    username
   }
 }
 `;
@@ -32,7 +33,7 @@ mutation(
   $description: String!,
   $category: String!,
   $instructions: String!,
-  $username: String
+  $username: String!
 ) {
   addRecipe(
     name: $name

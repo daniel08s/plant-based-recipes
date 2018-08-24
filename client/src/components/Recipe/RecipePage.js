@@ -11,7 +11,6 @@ const RecipePage = ({ match }) => {
     {({ data, loading, error }) => {
       if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
       if (error) return <div>Error</div>
-      console.log(data);
       return (
         <Fragment>
           <div className="App">Recipe Page</div>
