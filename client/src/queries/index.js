@@ -26,7 +26,28 @@ query($_id: ID!) {
 `;
 
 /* Recipes Mutations */
-
+export const ADD_RECIPE = gql`
+mutation(
+  $name: String!,
+  $description: String!,
+  $category: String!,
+  $instructions: String!,
+  $username: String
+) {
+  addRecipe(
+    name: $name
+    description: $description
+    category: $category
+    instructions: $instructions
+    username: $username
+  ) {
+    name
+    createdDate
+    likes
+    username
+  }
+}
+`;
 
 /* User Queries */
 export const GET_ALL_USERS = gql`
