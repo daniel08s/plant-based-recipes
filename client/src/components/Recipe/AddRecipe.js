@@ -4,7 +4,6 @@ import { Mutation } from 'react-apollo';
 
 import { ADD_RECIPE } from '../../queries';
 import Error from '../Error';
-import withSession from '../withSession';
 
 const initialState = {
   name: "",
@@ -38,6 +37,12 @@ class AddRecipe extends React.Component {
         this.clearState();
         this.props.history.push('/');
       });
+  };
+
+  validateForm = () => {
+    const { name, description, category, instructions } = this.state;
+    const isInvalid = !name || !description || !category || !instructions;
+    return isInvalid;
   };
 
   render() {
@@ -83,7 +88,11 @@ class AddRecipe extends React.Component {
                 onChange={this.handleChange}
                 value={instructions}
               />
-              <button type="submit" className="button-primary">Submit</button>
+              <button
+                type="submit"
+                className="button-primary"
+                disabled={loading || this.validateForm()}
+              >Submit</button>
               {error &&  <Error error={error} />}
             </form>
           );
@@ -94,4 +103,4 @@ class AddRecipe extends React.Component {
   };
 };
 
-export default withRouter(withSession(AddRecipe));
+export default withRouter(AddRecipe);

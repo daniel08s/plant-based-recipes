@@ -16,7 +16,6 @@ const App = () => (
       {({ data, loading, error }) => {
         if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
         if (error) return <div>Error</div>
-        console.log(data.getAllRecipes);
         return (
           <ul>
             {data.getAllRecipes.map(recipe => (
