@@ -1,2 +1,9 @@
 # plant-based-recipes
-Recipes app with React, GraphQL and Apollo Boost
+Simple app to manage plant-based recipes
+
+## Stack
+- ⚛️ React
+- 🔥 GraphQL 
+- 🚀 Apollo Boost
+- 🗃️ MongoDB
+
