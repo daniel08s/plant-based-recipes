@@ -52,6 +52,10 @@ exports.resolvers = {
 
     getAllUsers: async (root, args, { User }) => {
       return await User.find();
+    },
+
+    getUserRecipes: async (root, { username }, { Recipe }) => {
+      return await Recipe.find({ username }).sort({ createdDate: 'desc' });
     }
   },
   Mutation: {
