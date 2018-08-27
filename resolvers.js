@@ -70,6 +70,18 @@ exports.resolvers = {
       return newRecipe;
     },
 
+    likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
+      const recipe = await Recipe.findOneAndUpdate(
+        { _id },
+        { $inc: { likes: 1 } }
+      );
+      await User.findOneAndUpdate(
+        { username },
+        { $addToSet: { favorites: _id } }
+      );
+      return recipe;
+    },
+
     deleteUserRecipe: async (root, { _id }, { Recipe }) => {
       return await Recipe.findOneAndRemove({ _id });
     },
