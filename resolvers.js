@@ -70,6 +70,10 @@ exports.resolvers = {
       return newRecipe;
     },
 
+    deleteUserRecipe: async (root, { _id }, { Recipe }) => {
+      return await Recipe.findOneAndRemove({ _id });
+    },
+
     signinUser: async (root, { username, password }, { User }) => {
       const user = await User.findOne({ username });
       if (!user) {
@@ -93,6 +97,6 @@ exports.resolvers = {
         password
       }).save();
       return { token: createToken(newUser, process.env.SECRET, '1hr') };
-    },
+    }
   }
 };
