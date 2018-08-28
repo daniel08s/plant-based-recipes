@@ -73,6 +73,15 @@ mutation($_id: ID!, $username: String!) {
 }
 `;
 
+export const UNLIKE_RECIPE = gql`
+mutation($_id: ID!, $username: String!) {
+  unlikeRecipe(_id: $_id, username: $username){
+    _id,
+    likes
+  }
+}
+`;
+
 export const DELETE_USER_RECIPE = gql`
 mutation($_id: ID!) {
   deleteUserRecipe(_id: $_id){

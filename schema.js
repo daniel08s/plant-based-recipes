@@ -47,6 +47,11 @@ type Mutation {
     username: String!
   ): Recipe
 
+  unlikeRecipe(
+    _id: ID!,
+    username: String!
+  ): Recipe
+
   deleteUserRecipe(
     _id: ID!
   ): Recipe
