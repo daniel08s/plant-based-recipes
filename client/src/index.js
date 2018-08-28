@@ -22,7 +22,7 @@ import RecipePage from './components/Recipe/RecipePage';
 import Profile from './components/Profile/Profile';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4444/graphql',
+  uri: 'https://plant-based-recipes.herokuapp.com/graphql',
   fetchOptions: {
     credentials: 'include'
   },

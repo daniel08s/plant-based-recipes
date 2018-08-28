@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "Recipes app with React, GraphQL and Apollo Boost",
   "main": "server.js",
+  "engines": {
+    "node": "10.1.0",
+    "yarn": "1.9.4"
+  },
   "scripts": {
+    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "cd client && npm start",
     "dev":
-      "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+      "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
+    "heroku-postbuild":
+      "npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "MIT",
