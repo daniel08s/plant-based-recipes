@@ -24,7 +24,8 @@ class Search extends React.Component {
           <div className="App">
             <input
               type="search"
-              placeholder="Search for Recipes"
+              className="search"
+              placeholder="Search for recipes 🔎"
               onChange={async event => {
                 event.persist();
                 const { data } = await client.query({
@@ -34,7 +35,7 @@ class Search extends React.Component {
                 this.handleChange(data);
               }}
             />
-            <ul>
+            <ul className="cards">
               {searchResults.map(recipe => (
                 <SearchItem  key={recipe._id} {...recipe} />
               ))}

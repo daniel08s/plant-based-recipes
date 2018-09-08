@@ -19,7 +19,7 @@ nav ul {
 
 p,
 li {
-  font-size: 2rem;
+  font-size: 18px;
 }
 
 ul {
@@ -30,13 +30,13 @@ input,
 select,
 textarea {
   padding: 0.4em 0.2em;
-  font-size: 2rem;
+  font-size: 18px;
 }
 
 nav a,
 nav a:link {
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 28px;
   font-weight: 100;
 }
 
@@ -187,7 +187,7 @@ nav a:link {
 }
 
 .recipe h1 {
-  font-size: 2.5rem;
+  font-size: 21px;
   text-align: center;
 }
 
@@ -201,7 +201,7 @@ nav a:link {
 }
 
 .recipe-description {
-  font-size: 2rem;
+  font-size: 18px;
   color: darkslategray;
   padding: 1em;
   font-weight: 200;
@@ -236,7 +236,7 @@ nav a:link {
   position: fixed;
   right: 1em;
   bottom: 1em;
-  font-size: 2rem;
+  font-size: 18px;
   background-color: #f15f79;
   color: white !important;
 }
@@ -244,10 +244,11 @@ nav a:link {
 /* Search */
 
 .search {
-  font-size: 3rem;
+  font-size: 24px;
   transition: width 0.2s ease-in;
-  margin: 2em;
-  width: 10em;
+  margin: 2.2em;
+  width: 11em;
+  text-align: center;
 }
 
 .search:focus {

@@ -29,6 +29,7 @@ query($searchTerm: String) {
     _id
     name
     likes
+    imageUrl
   }
 }
 `;

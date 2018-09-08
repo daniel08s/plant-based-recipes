@@ -72,7 +72,7 @@ class AddRecipe extends React.Component {
     const { name, imageUrl, description, category, instructions, username } = this.state;
     return (
     <div className="App">
-      <h2>Add Recipe</h2>
+      <h1 className="main-title">Add Recipe</h1>
       <Mutation
         mutation={ADD_RECIPE}
         variables={{ name, imageUrl, description, category, instructions, username }}

@@ -10,7 +10,7 @@ const RecipePage = ({ match }) => {
   const { _id } = match.params;
   return (
   <div className="App">
-    <h1>Recipe Page</h1>
+    <h1 className="main-title">Recipe Page</h1>
     <Query query={GET_RECIPE} variables={{ _id }}>
       {({ data, loading, error }) => {
         if (loading) return <Spinner />
