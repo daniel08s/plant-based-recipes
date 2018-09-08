@@ -8,6 +8,7 @@ import {
   GET_ALL_RECIPES,
   GET_CURRENT_USER
 } from '../../queries';
+import Spinner from '../Spinner';
 
 const handleDelete = deleteUserRecipe => {
   const confirmDelete = window.confirm('Are you sure you want to delete the recipe?');
@@ -22,7 +23,7 @@ const UserRecipes = ({ username }) => (
     variables={{ username }}
   >
     {({ data, loading, error }) => {
-      if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
+      if (loading) return <Spinner />
       if (error) return <div>Error</div>
       return (
         <ul>

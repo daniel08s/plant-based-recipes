@@ -2,6 +2,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import posed from 'react-pose';
+import Spinner from './Spinner';
 
 // our packages
 import { GET_ALL_RECIPES } from '../queries';
@@ -41,7 +42,7 @@ class App extends React.Component {
         </h1>
         <Query query={GET_ALL_RECIPES}>
           {({ data, loading, error }) => {
-            if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
+            if (loading) return <Spinner />
             if (error) return <div><span role="img" aria-label="StopSign">🛑</span> Error</div>
             
             const { on } = this.state;

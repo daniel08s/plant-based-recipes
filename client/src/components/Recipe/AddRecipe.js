@@ -9,6 +9,7 @@ import {
 } from '../../queries';
 import Error from '../Error';
 import withAuth from '../withAuth';
+import Spinner from '../Spinner';
 
 const initialState = {
   name: "",
@@ -81,7 +82,7 @@ class AddRecipe extends React.Component {
         update={this.updateCache}  
       >
         {(addRecipe, { data, loading, error }) => {
-          if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
+          if (loading) return <Spinner />
           return (
             <form
               className="form"

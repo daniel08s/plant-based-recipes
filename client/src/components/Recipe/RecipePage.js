@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 
 import { GET_RECIPE } from '../../queries';
 import LikeRecipe from './LikeRecipe';
+import Spinner from '../Spinner';
 
 const RecipePage = ({ match }) => {
   const { _id } = match.params;
@@ -12,7 +13,7 @@ const RecipePage = ({ match }) => {
     <h1>Recipe Page</h1>
     <Query query={GET_RECIPE} variables={{ _id }}>
       {({ data, loading, error }) => {
-        if (loading) return <div><span role="img" aria-label="Hourglass">⏳</span> Loading...</div>
+        if (loading) return <Spinner />
         if (error) return <div>Error</div>
         return (
             <div className="App">
