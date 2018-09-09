@@ -17,69 +17,79 @@ const handleDelete = deleteUserRecipe => {
   }
 };
 
-const UserRecipes = ({ username }) => (
-  <Query
-    query={GET_USER_RECIPES}
-    variables={{ username }}
-  >
-    {({ data, loading, error }) => {
-      if (loading) return <Spinner />
-      if (error) return <div>Error</div>
-      return (
-        <ul>
-          <h3>Your recipes</h3>
-          {!data.getUserRecipes.length && (
-            <p>
-              <strong>You haven't added any recipes yet. Go ahead and add one! 
-                <span role="img" aria-label="GreenSalad">🥗</span>
-              </strong>
-            </p>
-          )}
-          {data.getUserRecipes.map(recipe => (
-            <li key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}><p>{recipe.name}</p></Link>
-              <p style={{ marginBottom: "0" }}>Likes: {recipe.likes}</p>
+class UserRecipes extends React.Component {
+  
+  render() {
+    const { username } = this.props;
 
-              <Mutation
-                mutation={DELETE_USER_RECIPE}
-                variables={{ _id: recipe._id }}
-                refetchQueries={() => [
-                  { query: GET_ALL_RECIPES },
-                  { query: GET_CURRENT_USER }
-                ]}
-                update={(cache, { data: { deleteUserRecipe } }) => {
-                  const { getUserRecipes } = cache.readQuery({
-                    query: GET_USER_RECIPES,
-                    variables: { username }
-                  });
+    return (
+      <Query
+        query={GET_USER_RECIPES}
+        variables={{ username }}
+      >
+        {({ data, loading, error }) => {
+          if (loading) return <Spinner />
+          if (error) return <div>Error</div>
+          return (
+            <ul>
+              <h3>Your recipes</h3>
+              {!data.getUserRecipes.length && (
+                <p>
+                  <strong>You haven't added any recipes yet. Go ahead and add one! 
+                    <span role="img" aria-label="GreenSalad">🥗</span>
+                  </strong>
+                </p>
+              )}
+              {data.getUserRecipes.map(recipe => (
+                <li key={recipe._id}>
+                  <Link to={`/recipes/${recipe._id}`}><p>{recipe.name}</p></Link>
+                  <p style={{ marginBottom: "0" }}>Likes: {recipe.likes}</p>
 
-                  cache.writeQuery({
-                    query: GET_USER_RECIPES,
-                    variables: { username },
-                    data: {
-                      getUserRecipes: getUserRecipes.filter(
-                        recipe => recipe._id !== deleteUserRecipe._id
-                      )
-                    }
-                  });
-                }}
-              >
-              {(deleteUserRecipe, attrs = {}) => (
-                  <p
-                    className="delete-button"
-                    onClick={() => handleDelete(deleteUserRecipe)}
+                  <Mutation
+                    mutation={DELETE_USER_RECIPE}
+                    variables={{ _id: recipe._id }}
+                    refetchQueries={() => [
+                      { query: GET_ALL_RECIPES },
+                      { query: GET_CURRENT_USER }
+                    ]}
+                    update={(cache, { data: { deleteUserRecipe } }) => {
+                      const { getUserRecipes } = cache.readQuery({
+                        query: GET_USER_RECIPES,
+                        variables: { username }
+                      });
+
+                      cache.writeQuery({
+                        query: GET_USER_RECIPES,
+                        variables: { username },
+                        data: {
+                          getUserRecipes: getUserRecipes.filter(
+                            recipe => recipe._id !== deleteUserRecipe._id
+                          )
+                        }
+                      });
+                    }}
                   >
-                    {attrs.loading ? 'deleting...' : 'X'}
-                  </p>
-                )
-              }
-              </Mutation>
-            </li>
-          ))}
-        </ul>
-      );
-    }}
-  </Query>
-);
+                  {(deleteUserRecipe, attrs = {}) => (
+                      <div>
+                        <button className="button-primary">Update</button>
+                        <button
+                          className="delete-button"
+                          onClick={() => handleDelete(deleteUserRecipe)}
+                        >
+                          {attrs.loading ? 'deleting...' : 'DELETE'}
+                        </button>
+                      </div>
+                    )
+                  }
+                  </Mutation>
+                </li>
+              ))}
+            </ul>
+          );
+        }}
+      </Query>
+    );
+  }
+}
 
 export default UserRecipes;

@@ -51,9 +51,20 @@ nav a:link {
   flex-direction: column;
 }
 
-.delete-button {
-  color: red;
+.delete-button,
+.delete-button:focus
+.delete-button:active {
+  margin: 2px;
+  color: white;
+  background-color: #c0392b;
+  border-color: #c0392b;
   cursor: pointer;
+}
+
+.delete-button:hover {
+  color: white;
+  background-color: #af2819;
+  border-color: #af2819;
 }
 
 /* App */
