@@ -43,7 +43,7 @@ class Signin extends React.Component {
     const { username, password} = this.state;
     return (
       <div className="App">
-        <h2 className="App">Signin</h2>
+        <h1 className="main-title">Signin</h1>
         <Mutation
           mutation={SIGNIN_USER}
           variables={{ username, password }} >
