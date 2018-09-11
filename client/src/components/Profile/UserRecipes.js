@@ -24,8 +24,6 @@ class UserRecipes extends React.Component {
 
   handleSubmit = (event, updateUserRecipe) => {
     event.preventDefault();
-    console.log(updateUserRecipe);
-    console.log(updateUserRecipe());
     updateUserRecipe().then(({ data }) => {
       console.log('xxx');
       console.log(data);
