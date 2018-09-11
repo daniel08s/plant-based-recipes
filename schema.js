@@ -54,6 +54,14 @@ type Mutation {
     username: String!
   ): Recipe
 
+  updateUserRecipe(
+    _id: ID!,
+    name: String!,
+    imageUrl: String!,
+    description: String!,
+    category: String!
+  ): Recipe
+
   deleteUserRecipe(
     _id: ID!
   ): Recipe

@@ -95,6 +95,15 @@ exports.resolvers = {
       return recipe;
     },
 
+    updateUserRecipe: async (root, { _id, name, imageUrl, description, category }, { Recipe }) => {
+      const updatedRecipe = await Recipe.findOneAndUpdate(
+        { _id },
+        { $set: { name, imageUrl,  description, category } },
+        { new : true }
+      );
+      return updatedRecipe;
+    },
+
     deleteUserRecipe: async (root, { _id }, { Recipe }) => {
       return await Recipe.findOneAndRemove({ _id });
     },

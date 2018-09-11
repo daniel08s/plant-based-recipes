@@ -76,6 +76,31 @@ mutation($_id: ID!, $username: String!) {
 ${recipeFragments.like}
 `;
 
+export const UPDATE_USER_RECIPE = gql`
+mutation(
+  $_id: ID!
+  $name: String!
+  $imageUrl: String!
+  $description: String!
+  $category: String!
+) {
+  updateUserRecipe(
+    _id: $_id
+    name: $name
+    imageUrl: $imageUrl
+    description: $description
+    category: $category
+  ) {
+    _id
+    name
+    likes
+    category
+    description
+    imageUrl
+  }
+}
+`;
+
 export const DELETE_USER_RECIPE = gql`
 mutation($_id: ID!) {
   deleteUserRecipe(_id: $_id){
