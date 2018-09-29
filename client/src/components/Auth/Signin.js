@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo';
 
 import { SIGNIN_USER } from '../../queries';
 import Error from '../Error';
+import Button from '../Button';
 
 const initialState = {
   username: "",
@@ -66,11 +67,15 @@ class Signin extends React.Component {
                   value={password}
                   onChange={this.handleChange}
                 />
-                <button
+                {/* <button
                   type="submit"
                   disabled={loading || this.validateForm()}
                   className="button-primary"
-                >Submit</button>
+                >Submit</button> */}
+                <Button
+                  primary
+                  disabled={loading || this.validateForm()}
+                >Submit</Button>
                 {error &&  <Error error={error} />}
               </form>
             )
