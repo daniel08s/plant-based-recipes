@@ -140,6 +140,19 @@ query {
 }
 `;
 
+export const GET_USER = gql`
+query ($username: String!) {
+  getUser (username: $username) {
+    username
+    joinDate
+    favorites {
+      _id
+      name
+    }
+  }
+}
+`;
+
 export const GET_USER_RECIPES = gql`
 query ($username: String!) {
   getUserRecipes (username: $username) {

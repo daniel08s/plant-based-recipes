@@ -50,6 +50,15 @@ exports.resolvers = {
       return user;
     },
 
+    getUser: async (root, args, { User }) => {
+      const user = await User.findOne({ username: username })
+        .populate({
+          path: 'favorites',
+          model: 'Recipe'
+        });
+      return user;
+    },
+
     getAllUsers: async (root, args, { User }) => {
       return await User.find();
     },
