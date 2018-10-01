@@ -13,6 +13,12 @@ class RecipePage extends React.Component {
     modal: false,
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps.location.state.modal === false) {
+      this.setState({ modal: false })
+    }
+  }
+
   loadUser = () => {
     this.setState({ modal: true });
   }

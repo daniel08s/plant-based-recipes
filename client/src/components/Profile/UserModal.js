@@ -26,7 +26,6 @@ const UserModal = ({ username, closeModal }) => {
           <div className="modal-inner">
             <Card>
               <Card.Header>
-                {console.log(data)}
                 {data.getUser.username}
               </Card.Header>
               <Card.Details>
