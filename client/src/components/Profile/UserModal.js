@@ -17,19 +17,18 @@ const UserModal = ({ username, closeModal }) => {
       query={GET_USER}
       variables={{ username }}
     >
-    {(data, loading, error) => {
+    {({ data, loading, error }) => {
       if (loading) return <Spinner />
       if (error) return <div>Error</div>
-      const user = data.data.getUser;
-      console.log(user);
+
       return (
         <div className="modal modal-open">
           <div className="modal-inner">
             <Card>
               <Card.Header>
-                {console.log(data.data)}
-                {data.data.getUser.username}
-              </Card.Header>{/*
+                {console.log(data)}
+                {data.getUser.username}
+              </Card.Header>
               <Card.Details>
                 <p>Join Date: {formatDate(data.getUser.joinDate)}</p>
               </Card.Details>
@@ -38,7 +37,12 @@ const UserModal = ({ username, closeModal }) => {
                   <h3>{data.getUser.username}'s favorites</h3>
                   {data.getUser.favorites.map(favorite => 
                     <li key={favorite._id}>
-                      <Link to={`/recipes/${favorite._id}`}><p>{favorite.name}</p></Link>
+                      <Link
+                        to={{
+                          pathname: `/recipes/${favorite._id}`,
+                          state: { modal: false },
+                        }}
+                      ><p>{favorite.name}</p></Link>
                     </li>
                   )}
                   {!data.getUser.favorites.length && (
@@ -47,7 +51,7 @@ const UserModal = ({ username, closeModal }) => {
                     </p>
                   )}
                 </ul>
-              </Card.Favorites> */}
+              </Card.Favorites>
               <button onClick={closeModal}>Close</button>
             </Card>
           </div>
